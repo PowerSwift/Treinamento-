@@ -1,0 +1,40 @@
+// Bloco loop() - é lido infinitamente pelo Arduino
+void loop()
+{
+  // analog = analógica; Read = leitura;
+  SensorCeI = analogRead(A0);
+  SensorCdI = analogRead(A1);
+  SensorCeE = analogRead(A2);
+  SensorCdE = analogRead(A3);
+
+  //if - inicio de inteligencia artificial
+  //&& - Acrescentar condições em uma unica linha de "if
+  if ((SensorCeI <= 100) && (SensorCdI <= 100))
+  {
+    analogWrite(MotorDireitaFrente, 200);
+    analogWrite(MotorDireitaTras, 0);
+    analogWrite(MotorEsquerdaFrente, 200);
+    analogWrite(MotorEsquerdaTras, 0);
+  }
+  if ((SensorCeI <= 100) && (SensorCdi >200))
+  { 
+    analogWrite(MotorDireitaFrente, 0);
+    analogWrite(MotorDireitaTras, 200);
+    analogWrite(MotorEsquerdaFrente, 200);
+    analogWrite(MotorEsquerdaTras, 0);
+  }
+  if ((SensorCdI <= 100)&& (SensorCeI >200))
+  {
+    analogWrite(MotorDireitaFrente, 200);
+    analogWrite(MotorDireitaTras,     0);
+    analogWrite(MotorEsquerdaFrente,  0);
+    analogWrite(MotorEsquerdaTras,  200);
+  }
+}
+
+// SensorCeI = >200 (preto); <100 (branco)
+// SensorCdI = >200 (preto); <100 (branco)
+
+// SensorCeE = >200 (preto); <100 (branco)
+// SensorCdE = >200 (preto); <100 (branco)
+
