@@ -1,0 +1,62 @@
+
+     
+//Sensores
+
+     int SensorExtremaDireita   = A3;
+     int SensorExtremaEsquerda  = A0;
+     int SensorDireitaInterno    = A1;
+     int SensorEsquerdaInterno  = A2;
+
+
+//Motores 
+
+     byte MotorDireitaFrente     = 5;
+     byte MotorEsquerdaFrente    = 11;
+     byte MotorDireitaRetraso    = 6;
+     byte MotorEsquerdaRetraso   = 10; 
+
+
+void setup()
+{
+//Sensores
+
+     pinMode(SensorExtremaDireita,INPUT);
+     pinMode(SensorExtremaEsquerda,INPUT);
+     pinMode(SensorDireitaInterno,INPUT);
+     pinMode(SensorEsquerdaInterno,INPUT);
+
+//Motores 
+     
+     pinMode(MotorDireitaFrente,OUTPUT);
+     pinMode(MotorEsquerdaFrente,OUTPUT);
+     pinMode(MotorDireitaRetraso,OUTPUT);
+     pinMode(MotorEsquerdaRetraso,OUTPUT); 
+}
+
+void loop()
+{
+  if((SensorEsquerdaInterno <= 100) && (SensorDireitaInterno <= 100))
+{
+    analogWrite(MotorDireitaFrente,  200);
+    analogWrite(MotorDireitaRetraso,   0);
+    analogWrite(MotorEsquerdaFrente, 200);
+    analogWrite(MotorEsquerdaRetraso,  0);
+}
+
+  if ((SensorEsquerdaInterno <= 100) && (SensorDireitaInterno > 200))  
+{ 
+    analogWrite(MotorDireitaFrente,   200);
+    analogWrite(MotorDireitaRetraso,    0);
+    analogWrite(MotorEsquerdaFrente,    0);
+    analogWrite(MotorEsquerdaRetraso, 200);
+}  
+
+  if ((SensorEsquerdaInterno <= 100) && (SensorDireitaInterno >200))
+
+{   
+    analogWrite(MotorDireitaFrente,      0);
+    analogWrite(MotorDireitaRetraso,   200);
+    analogWrite(MotorEsquerdaFrente,   200);
+    analogWrite(MotorEsquerdaRetraso,    0);
+}  
+}    
